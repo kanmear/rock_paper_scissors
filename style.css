@@ -1,3 +1,52 @@
 * {
+    margin: 0;
+    padding: 0;
     background-color: black;
+}
+
+body {
+    margin-top: 5vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+}
+
+.rock,
+.paper,
+.scissors {
+    height: 100px;
+    width: 100px;
+    border: solid 2px orangered;
+    border-radius: 9px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-size: 60px;
+    color: yellow;
+}
+
+.start-game {
+    border: solid 2px orangered;
+    border-radius: 9px;
+    padding: 2vh;
+
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+}
+
+h2 {
+    color: yellow;
 }
