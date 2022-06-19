@@ -1,3 +1,90 @@
 * {
-    background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.main-container {
+  margin-top: 5vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+}
+
+.start-game {
+  padding: 2vh;
+  white-space: nowrap;
+  background-color: transparent;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.handsigns-container {
+  display: flex;
+  justify-content: center;
+  gap: 7vw;
+}
+
+#rock,
+#paper,
+#scissors {
+  height: 100px;
+  width: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.handsign {
+  font-size: 60px;
+  font-weight: 100;
+}
+
+.output {
+  padding: 2vh;
+}
+
+.output-border {
+  border: 3px solid darkgray;
+}
+
+.interactive-border {
+  max-width: 300px;
+
+  border: 3px solid lightgray;
+  transition: 0.5s;
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.interactive-border:hover {
+  border: 3px solid #0575e6;
+}
+
+.non-interactive-border {
+  max-width: 450px;
+
+  border: 3px solid darkgray;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.text-blue {
+  color: #0092f2;
+  transition: 1s;
+}
+
+.text-gray {
+  color: darkslategray;
+  transition: 1s;
 }
