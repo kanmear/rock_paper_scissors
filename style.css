@@ -14,6 +14,18 @@
   gap: 5vh;
 }
 
+.start-game {
+  padding: 2vh;
+  white-space: nowrap;
+  background-color: transparent;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+}
+
 .handsigns-container {
   display: flex;
   justify-content: center;
@@ -31,50 +43,8 @@
   align-items: center;
 }
 
-.interactive-border {
-  border: 3px solid lightgray;
-  max-width: 300px;
-  transition: 0.5s;
-  overflow: hidden;
-
-
-  /* todo: set pointer on needed elements */
-  cursor: pointer;
-}
-
-.interactive-border:hover {
-  border: 3px solid #0575e6;
-}
-
-.non-interactive-border {
-  border: 3px solid darkgray;
-  max-width: 450px;
-  transition: 0.5s;
-  overflow: hidden;
-}
-
 .handsign {
   font-size: 60px;
-  font-weight: 100;
-}
-
-.start-game {
-  padding: 2vh;
-  white-space: nowrap;
-  background-color: transparent;
-  /* display: flex;
-  justify-content: center;
-  gap: 10vw; */
-}
-
-.game-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
-}
-
-h2 {
-  font-size: 30px;
   font-weight: 100;
 }
 
@@ -84,6 +54,29 @@ h2 {
 
 .output-border {
   border: 3px solid darkgray;
+}
+
+.interactive-border {
+  max-width: 300px;
+
+  border: 3px solid lightgray;
+  transition: 0.5s;
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.interactive-border:hover {
+  border: 3px solid #0575e6;
+}
+
+.non-interactive-border {
+  max-width: 450px;
+
+  border: 3px solid darkgray;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
 .text-blue {
