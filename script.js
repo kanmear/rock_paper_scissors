@@ -1,6 +1,7 @@
 // ui
 const startButton = document.querySelector('.start-game');
-const choices = document.querySelectorAll('h3');
+const handsigns = document.querySelectorAll('.handsign');
+const output = document.querySelector('.output');
 
 startButton.addEventListener('click', startGame);
 
@@ -24,12 +25,12 @@ function computerPlay() {
 
 function waitForPlayerSelect() {
     return new Promise((resolve) => {
-        choices.forEach(choice => {
+        handsigns.forEach(handsign => {
             const listener = () => {
-                choice.removeEventListener('click', listener);
-                resolve(choice.parentNode.className);
+                handsign.parentNode.removeEventListener('click', listener);
+                resolve(handsign.parentNode.id);
             }
-            choice.addEventListener('click', listener);
+            handsign.parentNode.addEventListener('click', listener);
         })
     })
 }
@@ -55,16 +56,42 @@ function playRound(playerSelection, computerSelection) {
 }
 
 async function startGame() {
+    startButton.removeEventListener('click', startGame);
+    actuateTextColor();
+
+    startButton.innerText = 'Game in progress';
+
     let playerScore = 0;
     let computerScore = 0;
-    for (let i = 1; i <= 5; i++) {
-        let selection = await waitForPlayerSelect();
-        let result = playRound(selection, computerPlay());
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = await waitForPlayerSelect();
+        let computerSelection = computerPlay();
+        let result = playRound(playerSelection, computerSelection);
         if (result == PLAYER_WON)
             playerScore++;
         else if (result == COMPUTER_WON)
             computerScore++;
+        output.innerHTML = `You chose: ${playerSelection};<br>computer chose: ${computerSelection}<br>Result: ${result}`;
     }
 
-    console.log(`Final score:\nYou - ${playerScore}\nRandom number generator - ${computerScore}`);
+    output.innerHTML = (`Final score:<br>You - ${playerScore}<br>Random number generator - ${computerScore}`);
+    startButton.innerText = 'Start the game';
+    actuateTextColor();
+
+    startButton.addEventListener('click', startGame);
+}
+
+function actuateTextColor() {
+    startButton.classList.toggle('text-gray');
+    startButton.classList.toggle('text-blue');
+    startButton.parentElement.classList.toggle('interactive-border');
+    startButton.parentElement.classList.toggle('non-interactive-border');
+
+    handsigns.forEach(choice => choice.classList.toggle('text-gray'));
+    handsigns.forEach(choice => choice.classList.toggle('text-blue'));
+    handsigns.forEach(choice => choice.parentElement.classList.toggle('interactive-border'));
+    handsigns.forEach(choice => choice.parentElement.classList.toggle('non-interactive-border'));
+
+    output.classList.toggle('text-gray');
+    output.classList.toggle('text-blue');
 }

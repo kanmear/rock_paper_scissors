@@ -11,18 +11,27 @@
 </head>
 
 <body>
-    <div class="start-game">
-        <h2>Start the game</h2>
-    </div>
-    <div class="choice-container">
-        <div class="rock">
-            <h3>R</h4>
+    <div class="main-container">
+        <div class="interactive-border">
+            <h2 class="start-game text-blue">Start the game</h2>
         </div>
-        <div class="paper">
-            <h3>P</h4>
-        </div>
-        <div class="scissors">
-            <h3>S</h4>
+        <div class="game-container">
+            <div class="handsigns-container">
+                <div id="rock" class="non-interactive-border">
+                    <h3 class="handsign text-gray">R</h4>
+                </div>
+                <div id="paper" class="non-interactive-border">
+                    <h3 class="handsign text-gray">P</h4>
+                </div>
+                <div id="scissors" class="non-interactive-border">
+                    <h3 class="handsign text-gray">S</h4>
+                </div>
+            </div>
+            <div>
+                <div class="output-border">
+                    <p class="output text-gray"></p>
+                </div>
+            </div>
         </div>
     </div>
 </body>

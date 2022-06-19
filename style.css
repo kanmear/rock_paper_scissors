@@ -1,52 +1,97 @@
 * {
-    margin: 0;
-    padding: 0;
-    background-color: black;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  background-color: black;
 }
 
-body {
-    margin-top: 5vh;
+.main-container {
+  margin-top: 5vh;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
 }
 
-.choice-container {
-    display: flex;
-    justify-content: center;
-    gap: 10vw;
+.handsigns-container {
+  display: flex;
+  justify-content: center;
+  gap: 7vw;
 }
 
-.rock,
-.paper,
-.scissors {
-    height: 100px;
-    width: 100px;
-    border: solid 2px orangered;
-    border-radius: 9px;
+#rock,
+#paper,
+#scissors {
+  height: 100px;
+  width: 100px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h3 {
-    font-size: 60px;
-    color: yellow;
+.interactive-border {
+  border: 3px solid lightgray;
+  max-width: 300px;
+  transition: 0.5s;
+  overflow: hidden;
+
+
+  /* todo: set pointer on needed elements */
+  cursor: pointer;
+}
+
+.interactive-border:hover {
+  border: 3px solid #0575e6;
+}
+
+.non-interactive-border {
+  border: 3px solid darkgray;
+  max-width: 450px;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.handsign {
+  font-size: 60px;
+  font-weight: 100;
 }
 
 .start-game {
-    border: solid 2px orangered;
-    border-radius: 9px;
-    padding: 2vh;
+  padding: 2vh;
+  white-space: nowrap;
+  background-color: transparent;
+  /* display: flex;
+  justify-content: center;
+  gap: 10vw; */
+}
 
-    display: flex;
-    justify-content: center;
-    gap: 10vw;
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
 }
 
 h2 {
-    color: yellow;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.output {
+  padding: 2vh;
+}
+
+.output-border {
+  border: 3px solid darkgray;
+}
+
+.text-blue {
+  color: #0092f2;
+  transition: 1s;
+}
+
+.text-gray {
+  color: darkslategray;
+  transition: 1s;
 }
