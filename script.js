@@ -3,16 +3,19 @@ const startButton = document.querySelector('.start-game');
 const handsigns = document.querySelectorAll('.handsign');
 const output = document.querySelector('.output');
 
-startButton.addEventListener('click', startGame);
+const PLAYER_WON = 'Congratulations, you win!';
+const COMPUTER_WON = 'Tough luck, you lose!';
+const DRAW = 'It\'s a draw';
+
+const START_THE_GAME = 'Start the game';
+const GAME_IN_PROGRESS = 'Game in progress';
 
 // logic
 const ROCK = 'rock';
 const PAPER = 'paper';
 const SCISSORS = 'scissors';
 
-const PLAYER_WON = 'Congratulations, you win!';
-const COMPUTER_WON = 'Tough luck, you lose!';
-const DRAW = 'It\'s a draw';
+startButton.addEventListener('click', startGame);
 
 function computerPlay() {
     let play = Math.floor(Math.random() * 3);
@@ -56,11 +59,24 @@ function playRound(playerSelection, computerSelection) {
 }
 
 async function startGame() {
-    startButton.removeEventListener('click', startGame);
-    actuateTextColor();
+    toggleStartButtonState(false, GAME_IN_PROGRESS);
 
-    startButton.innerText = 'Game in progress';
+    await playGame();
 
+    toggleStartButtonState(true, START_THE_GAME);
+}
+
+function toggleStartButtonState(toggleEventListener, message) {
+    startButton.innerText = message;
+    actuateStyles();
+
+    if (toggleEventListener)
+        startButton.addEventListener('click', startGame);
+    else
+        startButton.removeEventListener('click', startGame);
+}
+
+async function playGame() {
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++) {
@@ -73,15 +89,10 @@ async function startGame() {
             computerScore++;
         output.innerHTML = `You chose: ${playerSelection};<br>computer chose: ${computerSelection}<br>Result: ${result}`;
     }
-
     output.innerHTML = (`Final score:<br>You - ${playerScore}<br>Random number generator - ${computerScore}`);
-    startButton.innerText = 'Start the game';
-    actuateTextColor();
-
-    startButton.addEventListener('click', startGame);
 }
 
-function actuateTextColor() {
+function actuateStyles() {
     startButton.classList.toggle('text-gray');
     startButton.classList.toggle('text-blue');
     startButton.parentElement.classList.toggle('interactive-border');
